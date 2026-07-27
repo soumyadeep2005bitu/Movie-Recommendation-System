@@ -1,4 +1,9 @@
-API_KEY = "ef9fc1c35c8a6f1c46b5e40bb2645c55"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("TMDB_API_KEY")
 DEFAULT_POSTER = "https://via.placeholder.com/500x750?text=No+Poster"
 from streamlit_searchbox import st_searchbox
 import streamlit as st
