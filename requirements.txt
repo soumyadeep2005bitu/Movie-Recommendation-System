@@ -5,3 +5,4 @@ requests
 streamlit-searchbox
 python-dotenv
 scikit-learn
+gdown
