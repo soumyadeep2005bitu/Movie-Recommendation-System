@@ -51,9 +51,43 @@ if "searched_movie" not in st.session_state:
 
 if "favorites" not in st.session_state:
     st.session_state.favorites = []
+import os
+import gdown
+
+import os
+import gdown
+import streamlit as st
+
+import os
+import requests
+import streamlit as st
+
+def download_similarity():
+    output = "similarity1.pkl"
+
+    if os.path.exists(output):
+        return
+
+    url = "https://huggingface.co/soumyadeep2005/movizio-similarity/resolve/main/similarity1.pkl?download=true"
+
+    with st.spinner("⬇ Downloading AI Recommendation Engine (first launch only)..."):
+
+        response = requests.get(url, stream=True, timeout=300)
+        response.raise_for_status()
+
+        with open(output, "wb") as f:
+            for chunk in response.iter_content(chunk_size=1024 * 1024):
+                if chunk:
+                    f.write(chunk)
+
+    if not os.path.exists(output):
+        st.error("❌ Failed to download similarity1.pkl")
+        st.stop()
 
 @st.cache_resource
 def load_data():
+    download_similarity()
+
     movie_dict = pickle.load(open("movie_dict1.pkl", "rb"))
     movies = pd.DataFrame(movie_dict)
 
