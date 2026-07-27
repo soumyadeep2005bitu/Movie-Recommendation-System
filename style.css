@@ -1,0 +1,17 @@
+.stApp {
+    background-image: url("assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+section[data-testid="stSidebar"] {
+    background-image: url("assets/sidebar.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+section[data-testid="stSidebar"] > div {
+    background: rgba(0,0,0,0.70);
+    backdrop-filter: blur(8px);
+}
